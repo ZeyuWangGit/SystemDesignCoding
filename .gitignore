@@ -398,3 +398,32 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# IntelliJ IDEA specific files
+.idea/
+*.iml
+*.iws
+
+# Ignore workspace files
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/usage.statistics.xml
+.idea/dictionaries/
+.idea/shelf/
+
+# Ignore build output directories
+/out/
+/target/
+
+# Ignore JetBrains IDE settings
+.idea/
+*.iml
+*.iws
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/usage.statistics.xml
+.idea/dictionaries/
+.idea/shelf/
+
+
+.DS_Store
