@@ -86,4 +86,30 @@ public class FixedWindowRateLimiterTests
 
         Assert.Equal(5, allowedCount); // 只允许 5 个请求
     }
+    
+    [Fact]
+    public async Task ThreadTaskSafetyTest()
+    {
+        var rateLimiter = new FixedWindowRateLimiter(5, 10);
+        int customerId = 1;
+        int allowedCount = 0;
+        int taskCount = 10;
+
+        var tasks = Enumerable.Range(0, taskCount)
+            .Select(_ =>
+            {
+                if (rateLimiter.RateLimit(customerId))
+                {
+                    Interlocked.Increment(ref allowedCount);
+                }
+
+                return Task.CompletedTask;
+            })
+            .ToArray();
+
+        await Task.WhenAll(tasks); // 等待所有任务完成
+
+        Assert.Equal(5, allowedCount); // 只允许 5 个请求
+    }
+
 }
