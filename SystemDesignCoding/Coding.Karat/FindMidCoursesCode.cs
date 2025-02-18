@@ -63,6 +63,59 @@ public static class CoursePathFinder
     */
     public static HashSet<String> FindMidCourses(List<String[]> allCourses)
     {
+        var graph = new Dictionary<string, List<string>>();
+        var allCoursesSet = new HashSet<String>();
+        var destinationCoursesSet = new HashSet<String>();
+        foreach (var coursePair in allCourses)
+        {
+            var from = coursePair[0];
+            var to = coursePair[1];
+            if (!graph.ContainsKey(from))
+            {
+                graph.Add(from, new List<string>());
+            }
+            graph[from].Add(to);
+            allCoursesSet.Add(to);
+            allCoursesSet.Add(from);
+            destinationCoursesSet.Add(to);
+        }
+        var startCourses = new HashSet<string>(allCoursesSet);
+        startCourses.ExceptWith(destinationCoursesSet);
         
+        var midCourses = new HashSet<string>();
+
+        foreach (var course in startCourses)
+        {
+            var path = new List<string>();
+            var visited = new HashSet<string>();
+            DFS(graph, course, visited, path, midCourses);
+        }
+
+        return midCourses;
+
     }
+
+    private static void DFS(Dictionary<string, List<string>> graph, string course, HashSet<string> visited,
+        List<string> path, HashSet<string> midCourses)
+    {
+        path.Add(course);
+        visited.Add(course);
+        if (!graph.ContainsKey(course) || graph[course].Count == 0)
+        {
+            var midIndex = path.Count / 2 - (path.Count % 2 == 0 ? 1 : 0);
+            midCourses.Add(path[midIndex]);
+        }
+        else
+        {
+            foreach (var neighborCourse in graph[course])
+            {
+                if (!visited.Contains(neighborCourse))
+                {
+                    DFS(graph, neighborCourse, visited, path, midCourses);
+                }
+            }
+        }
+        path.RemoveAt(path.Count - 1);
+        visited.Remove(course);
+    } 
 }
