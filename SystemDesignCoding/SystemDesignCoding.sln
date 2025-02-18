@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding.RateLimiter", "Coding.RateLimiter\Coding.RateLimiter.csproj", "{FF500091-4205-40BA-A106-48808E66B968}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding.ShortUrlService", "Coding.ShortUrlService\Coding.ShortUrlService.csproj", "{74085945-E988-4544-A0A6-2773BD76300B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding.Karat", "Coding.Karat\Coding.Karat.csproj", "{687CA7CC-42C1-4A43-AA03-9893AA3F1634}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{FF500091-4205-40BA-A106-48808E66B968}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF500091-4205-40BA-A106-48808E66B968}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF500091-4205-40BA-A106-48808E66B968}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74085945-E988-4544-A0A6-2773BD76300B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74085945-E988-4544-A0A6-2773BD76300B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74085945-E988-4544-A0A6-2773BD76300B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74085945-E988-4544-A0A6-2773BD76300B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{687CA7CC-42C1-4A43-AA03-9893AA3F1634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{687CA7CC-42C1-4A43-AA03-9893AA3F1634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{687CA7CC-42C1-4A43-AA03-9893AA3F1634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{687CA7CC-42C1-4A43-AA03-9893AA3F1634}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
