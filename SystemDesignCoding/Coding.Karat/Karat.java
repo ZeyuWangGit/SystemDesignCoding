@@ -207,6 +207,7 @@ public class Karat {
     }
 
     // [5]
+    // SOLVED
     /*
     You are a developer for a university. Your current project is to develop a system for students to find courses they share with friends. 
     The university has a system for querying courses students are enrolled in, returned as a list of (ID, course) pairs.
@@ -291,7 +292,7 @@ public class Karat {
     }
 
     // [6]
-
+    // SOLVED
     /*
     Students may decide to take different "tracks" or sequences of courses in the Computer Science curriculum.
     There may be more than one track that includes the same course, but each student follows a single linear track from a "root" node to a "leaf" node.
