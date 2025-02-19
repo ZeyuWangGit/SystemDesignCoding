@@ -400,6 +400,7 @@ public class Karat {
     }
 
     // [7]
+    // SOLVED
     /*
     there is an image filled with 0s and 1s. There is at most one rectangle in this image filled with 0s, find the rectangle.
     Output could be the coordinates of top-left and bottom-right elements of the rectangle, or top-left element, width and height.
@@ -445,7 +446,8 @@ public class Karat {
 
     // [8]
     /*
-    for the same image, it is filled with 0s and 1s. It may have multiple rectangles filled with 0s. The rectangles are separated by 1s. Find all the rectangles.
+    for the same image, it is filled with 0s and 1s. 
+    It may have multiple rectangles filled with 0s. The rectangles are separated by 1s. Find all the rectangles.
      */
     public static List<int[][]> findMultipleRectangles(int[][] board) {
         List<int[][]> result = new ArrayList<>();
