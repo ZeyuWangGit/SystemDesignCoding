@@ -923,6 +923,7 @@ public class Karat {
     }
 
     // [16]
+    // SOLVED
     /*
     输入是int[][] input, input[0]是input[1] 的parent，比如 {{1,4}, {1,5}, {2,5}, {3,6}, {6,7}}会形成上面的图
     第一问是只有0个parents和只有1个parent的节点
@@ -960,6 +961,7 @@ public class Karat {
     }
 
     // [17]
+    // SOLVED
     /*
     两个节点是否有公共祖先
      */
@@ -1016,6 +1018,7 @@ public class Karat {
     }
 
     // [18]
+    // SOLVED
     /*
     最远祖先
      */
