@@ -445,6 +445,7 @@ public class Karat {
     }
 
     // [8]
+    // SOLVED
     /*
     for the same image, it is filled with 0s and 1s. 
     It may have multiple rectangles filled with 0s. The rectangles are separated by 1s. Find all the rectangles.
@@ -502,6 +503,7 @@ public class Karat {
     }
 
     // [9]
+    // SOLVED
     /*
     the image has random shapes filled with 0s, separated by 1s. Find all the shapes. Each shape is represented by coordinates of all the elements inside.
      */
@@ -544,6 +546,7 @@ public class Karat {
     }
 
     // [10]
+    // SOLVED
     /*
     给一个word list 和最大的长度，要求把这些word用 - 串联起来，但不能超过最大的长度。
      */
@@ -580,9 +583,11 @@ public class Karat {
     }
 
     // [11]
+    // SOLVED
     /*
     We are building a word processor, and we would like to implement a "reflow" functionality that also applies full justification to the text.
-    Given an array containing lines of text and a new maximum width, re-flow the text to fit the new width. Each line should have the exact specified width. If any line is too short, insert '-' (as stand-ins for spaces) between words as equally as possible until it fits.
+    Given an array containing lines of text and a new maximum width, re-flow the text to fit the new width. 
+    Each line should have the exact specified width. If any line is too short, insert '-' (as stand-ins for spaces) between words as equally as possible until it fits.
     Note: we are using '-' instead of spaces between words to make testing and visual verification of the results easier.
 
     lines = [ "The day began as still as the",
@@ -753,6 +758,7 @@ public class Karat {
 
 
     // [15]
+    // SOLVED
     /*
     A nonogram is a logic puzzle, similar to a crossword, in which the player is given a blank grid and has to color it according to some instructions.
     Specifically, each cell can be either black or white, which we will represent as 0 for black and 1 for white.
@@ -917,6 +923,7 @@ public class Karat {
     }
 
     // [16]
+    // SOLVED
     /*
     输入是int[][] input, input[0]是input[1] 的parent，比如 {{1,4}, {1,5}, {2,5}, {3,6}, {6,7}}会形成上面的图
     第一问是只有0个parents和只有1个parent的节点
@@ -954,6 +961,7 @@ public class Karat {
     }
 
     // [17]
+    // SOLVED
     /*
     两个节点是否有公共祖先
      */
@@ -1010,6 +1018,7 @@ public class Karat {
     }
 
     // [18]
+    // SOLVED
     /*
     最远祖先
      */
