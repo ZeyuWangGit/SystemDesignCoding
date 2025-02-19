@@ -758,6 +758,7 @@ public class Karat {
 
 
     // [15]
+    // SOLVED
     /*
     A nonogram is a logic puzzle, similar to a crossword, in which the player is given a blank grid and has to color it according to some instructions.
     Specifically, each cell can be either black or white, which we will represent as 0 for black and 1 for white.
