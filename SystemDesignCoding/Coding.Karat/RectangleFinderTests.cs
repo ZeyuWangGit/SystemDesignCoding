@@ -209,4 +209,122 @@ public class RectangleFinderTests
                 Assert.Equal(expected[i][1], result[i][1]); // Bottom-right corner
             }
         }
+        
+        [Fact]
+        public void Test_FindMultipleShapes_ExampleCase()
+        {
+            int[][] board = {
+                new int[] {1, 1, 1, 1, 1},
+                new int[] {1, 0, 0, 1, 1},
+                new int[] {1, 0, 0, 1, 1},
+                new int[] {1, 1, 1, 1, 1},
+                new int[] {1, 0, 1, 1, 1},
+                new int[] {1, 0, 1, 1, 1}
+            };
+
+            List<List<int[]>> expected = new List<List<int[]>>
+            {
+                new List<int[]> // First shape
+                {
+                    new int[] {1, 1}, new int[] {2, 1},new int[] {2, 2},new int[] {1, 2},
+                     
+                },
+                new List<int[]> // Second shape
+                {
+                    new int[] {4, 1}, new int[] {5, 1}
+                }
+            };
+
+            var result = RectangleFinderCode.FindMultipleShapes(board);
+
+            Assert.Equal(expected.Count, result.Count);
+            for (int i = 0; i < expected.Count; i++)
+            {
+                Assert.Equal(expected[i].Count, result[i].Count);
+                for (int j = 0; j < expected[i].Count; j++)
+                {
+                    Assert.Equal(expected[i][j], result[i][j]);
+                }
+            }
+        }
+
+        [Fact]
+        public void Test_FindMultipleShapes_NoShapes()
+        {
+            int[][] board = {
+                new int[] {1, 1, 1},
+                new int[] {1, 1, 1},
+                new int[] {1, 1, 1}
+            };
+
+            List<List<int[]>> expected = new List<List<int[]>>(); // No shapes found
+            var result = RectangleFinderCode.FindMultipleShapes(board);
+
+            Assert.Empty(result);
+        }
+
+        [Fact]
+        public void Test_FindMultipleShapes_SingleShape()
+        {
+            int[][] board = {
+                new int[] {1, 1, 1},
+                new int[] {1, 0, 1},
+                new int[] {1, 1, 1}
+            };
+
+            List<List<int[]>> expected = new List<List<int[]>>
+            {
+                new List<int[]> { new int[] {1, 1} } // Single 0 at (1,1)
+            };
+
+            var result = RectangleFinderCode.FindMultipleShapes(board);
+
+            Assert.Equal(expected.Count, result.Count);
+            Assert.Equal(expected[0].Count, result[0].Count);
+            Assert.Equal(expected[0][0], result[0][0]);
+        }
+
+        [Fact]
+        public void Test_FindMultipleShapes_LargeCase()
+        {
+            int[][] board = {
+                new int[] {1, 1, 1, 1, 1, 1, 1},
+                new int[] {1, 0, 0, 1, 0, 0, 1},
+                new int[] {1, 0, 0, 1, 0, 0, 1},
+                new int[] {1, 1, 1, 1, 1, 1, 1},
+                new int[] {1, 0, 0, 0, 0, 1, 1},
+                new int[] {1, 0, 0, 0, 0, 1, 1}
+            };
+
+            List<List<int[]>> expected = new List<List<int[]>>
+            {
+                new List<int[]> // First shape
+                {
+                    new int[] {1, 1}, new int[] {2, 1},new int[] {2, 2},new int[] {1, 2},
+                },
+                new List<int[]> // Second shape
+                {
+                    new int[] {1, 4}, new int[] {2, 4},new int[] {2, 5}, new int[] {1, 5},
+                     
+                },
+                new List<int[]> // Third shape
+                {
+                     new int[] { 4, 1 }, new int[] { 5, 1 }, new int[] { 5, 2 }, new int[] { 4, 2 }, new int[] { 4, 3 },
+                     new int[] { 5, 3 }, new int[] { 5, 4 }, new int[] { 4, 4 },
+                       
+                }
+            };
+
+            var result = RectangleFinderCode.FindMultipleShapes(board);
+
+            Assert.Equal(expected.Count, result.Count);
+            for (int i = 0; i < expected.Count; i++)
+            {
+                Assert.Equal(expected[i].Count, result[i].Count);
+                for (int j = 0; j < expected[i].Count; j++)
+                {
+                    Assert.Equal(expected[i][j], result[i][j]);
+                }
+            }
+        }
 }

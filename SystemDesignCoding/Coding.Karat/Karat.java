@@ -445,6 +445,7 @@ public class Karat {
     }
 
     // [8]
+    // SOLVED
     /*
     for the same image, it is filled with 0s and 1s. 
     It may have multiple rectangles filled with 0s. The rectangles are separated by 1s. Find all the rectangles.
@@ -502,6 +503,7 @@ public class Karat {
     }
 
     // [9]
+    // SOLVED
     /*
     the image has random shapes filled with 0s, separated by 1s. Find all the shapes. Each shape is represented by coordinates of all the elements inside.
      */
