@@ -1063,6 +1063,7 @@ public class Karat {
     }
 
     // [19]
+    // SOLVED
     /*
     Given a list of people who enter and exit, find the people who entered without
     their badge and who exited without their badge.
@@ -1180,9 +1181,11 @@ public class Karat {
     }
 
     // [21]
+    // SOLVED
     /*
     We want to find employees who badged into our secured room together often.
-    Given an unordered list of names and access times over a single day, find the largest group of people that were in the room together during two or more separate time periods, and the times when they were all present.
+    Given an unordered list of names and access times over a single day, 
+    find the largest group of people that were in the room together during two or more separate time periods, and the times when they were all present.
     John: {(455,enter), (512,exit), (1510, exit)}
     ->
     John: {{455,512}, {1000, 1510}}
@@ -1319,6 +1322,7 @@ public class Karat {
     }
 
     // [22]
+    // SOLVED
     /*
     类似meeting rooms，输入是一个int[][] meetings, int start, int end, 每个数都是时间，13：00 -> 1300， 9：30 -> 18930， 看新的meeting 能不能安排到meetings
     ex: {[1300, 1500], [930, 1200],[830, 845]}, 新的meeting[820, 830], return true; [1450, 1500] return false;
@@ -1338,6 +1342,7 @@ public class Karat {
     }
 
     // [23]
+    // SOLVED
     /*
     类似merge interval，唯一的区别是输出，输出空闲的时间段，merge完后，再把两两个之间的空的输出就好，注意要加上0 - 第一个的start time
      */
@@ -1388,6 +1393,7 @@ public class Karat {
     }
 
     // [24]
+    // SOLVED
     /*
     You are planning out a trek across a snowy mountain. On the mountain it snows in the morning, the snow melts with the sun in the afternoon, and in the evening you can attempt a crossing.
     * Snow piles up at each location, making that location higher.
@@ -1630,56 +1636,6 @@ public class Karat {
     * ENTRY indicates which type of toll booth the vehicle went through. This is
         one of "ENTRY", "EXIT", or "MAINROAD".
      */
-//    enum EntryType {
-//        ENTRY, EXIT, MAINROAD
-//    }
-//    public record LogEntry(double timestamp, String licensePlate, String location, EntryType type) {}
-//
-//    public static List<String> catchSpeeders(List<LogEntry> logs) {
-//        logs.sort(Comparator.comparingDouble(i -> i.timestamp));
-//
-//        Map<String, List<LogEntry>> drivers = new HashMap<>();
-//        for (LogEntry log : logs) {
-//            drivers.computeIfAbsent(log.licensePlate(), k -> new ArrayList<>()).add(log);
-//        }
-//
-//        List<String> result = new ArrayList<>();
-//        for (Map.Entry<String, List<LogEntry>> entry : drivers.entrySet()) {
-//            List<LogEntry> driverLogs = entry.getValue();
-//            int i = 0;
-//            while (i < driverLogs.size()) {
-//                LogEntry log = driverLogs.get(i);
-//                if (log.type() == EntryType.ENTRY) {
-//                    double maxSpeed = 0.0;
-//                    while (i+1 < driverLogs.size()) {
-//                        LogEntry nextLog = driverLogs.get(i+1);
-//
-//                        double dist = Double.parseDouble(nextLog.location().substring(0, nextLog.location().length() - 1)) - Double.parseDouble(log.location().substring(0, log.location().length() - 1));
-//                        double time = nextLog.timestamp() - log.timestamp();
-//                        double speed = dist / (time / 3600);
-//
-//                        if (speed >= 130) {
-//                            result.add(log.licensePlate() + " over 130");
-//                            break;
-//                        }
-//                        if (speed >= 120 && maxSpeed >= 120) {
-//                            result.add(log.licensePlate() + " over 120");
-//                            break;
-//                        }
-//
-//                        maxSpeed = Math.max(maxSpeed, speed);
-//
-//                        if (nextLog.type() == EntryType.EXIT) {
-//                            break;
-//                        }
-//                        i++;
-//                    }
-//                }
-//                i++;
-//            }
-//        }
-//        return result;
-//    }
 
     static class LogEntry {
         double timestamp;
@@ -1784,8 +1740,10 @@ public class Karat {
     }
 
     // [27]
+    // SOLVED
     /*
-    You are going on a camping trip, but before you leave you need to buy groceries. To optimize your time spent in the store, instead of buying the items from your shopping list in order, you plan to buy everything you need from one department before moving to the next.
+    You are going on a camping trip, but before you leave you need to buy groceries. 
+    To optimize your time spent in the store, instead of buying the items from your shopping list in order, you plan to buy everything you need from one department before moving to the next.
     Given an unsorted list of products with their departments and a shopping list, return the time saved in terms of the number of department visits eliminated.
     Example:
     products = [
@@ -1846,7 +1804,8 @@ public class Karat {
     // [28]
     /*
     You and your friends are driving to a Campground to go camping. Only 2 of you have cars, so you will be carpooling.
-    Routes to the campground are linear, so each location will only lead to 1 location and there will be no loops or detours. Both cars will leave from their starting locations at the same time. The first car to pass someone's location will pick them up. If both cars arrive at the same time, the person can go in either car.
+    Routes to the campground are linear, so each location will only lead to 1 location and there will be no loops or detours. 
+    Both cars will leave from their starting locations at the same time. The first car to pass someone's location will pick them up. If both cars arrive at the same time, the person can go in either car.
     Roads are provided as a directed list of connected locations with the duration (in minutes) it takes to drive between the locations.
     [Origin, Destination, Duration it takes to drive]
     Given a list of roads, a list of starting locations and a list of people/where they live, return a collection of who will be in each car upon arrival to the Campground.
