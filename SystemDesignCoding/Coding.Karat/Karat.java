@@ -1802,6 +1802,7 @@ public class Karat {
     }
 
     // [28]
+    // SOLVED
     /*
     You and your friends are driving to a Campground to go camping. Only 2 of you have cars, so you will be carpooling.
     Routes to the campground are linear, so each location will only lead to 1 location and there will be no loops or detours. 
