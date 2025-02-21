@@ -3,6 +3,7 @@ namespace Coding.Karat;
 public static class RectangleFinderCode
 {
     /*
+     Q1:
         there is an image filled with 0s and 1s. There is at most one rectangle in this image filled with 0s, find the rectangle.
         Output could be the coordinates of top-left and bottom-right elements of the rectangle, or top-left element, width and height.
     */
@@ -52,6 +53,7 @@ public static class RectangleFinderCode
     }
 
     /*
+     Q2
         for the same image, it is filled with 0s and 1s.
         It may have multiple rectangles filled with 0s. The rectangles are separated by 1s. Find all the rectangles.
     */
@@ -109,8 +111,9 @@ public static class RectangleFinderCode
     }
     
     /*
-    the image has random shapes filled with 0s, separated by 1s. 
-    Find all the shapes. Each shape is represented by coordinates of all the elements inside.
+     Q3
+        the image has random shapes filled with 0s, separated by 1s. 
+        Find all the shapes. Each shape is represented by coordinates of all the elements inside.
      */
     public static List<List<int[]>> FindMultipleShapes(int[][] board)
     {

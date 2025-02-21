@@ -3,6 +3,7 @@ namespace Coding.Karat;
 public static class NodeFinderCode
 {
     /*
+    第一题：输出只有1个和0个parent的individual  
     输入是int[][] input, input[0]是input[1] 的parent，比如 {{1,4}, {1,5}, {2,5}, {3,6}, {6,7}}会形成上面的图
     第一问是只有0个parents和只有1个parent的节点
      */
@@ -40,6 +41,7 @@ public static class NodeFinderCode
     }
     
     /*
+    第二题是，任意给两个节点，给出他们共同的ancestor节点（可以有不只一个）。 
     两个节点是否有公共祖先
      */
     public static bool HasCommonAncestor(int[][] edges, int x, int y)
@@ -49,6 +51,45 @@ public static class NodeFinderCode
         var yAllAncestor = GetAllAncestor(y, parents);
         xAllAncestor.IntersectWith(yAllAncestor);
         return xAllAncestor.Count > 0;
+    }
+    
+    /*
+    第三题是，任意给一个节点，找出离它最远的ancestor节点，可以是多个
+    */
+    public static HashSet<int> EarliestAncestor(int[][] edges, int x)
+    {
+        var parentsMap = GetParentSet(edges);
+        var queue = new Queue<int>();
+        var visited = new HashSet<int>();
+
+        queue.Enqueue(x);
+        var res = new HashSet<int>();
+
+        while (queue.Count > 0)
+        {
+            var size = queue.Count;
+            res.Clear();
+            for (int i = 0; i < size; i++)
+            {
+                var curr = queue.Dequeue();
+                res.Add(curr);
+                if (!parentsMap.TryGetValue(curr, out var parents))
+                {
+                    continue;
+                }
+
+                foreach (var parent in parents.Where(parent => !visited.Contains(parent)))
+                {
+                    queue.Enqueue(parent);
+                    visited.Add(parent);
+                }
+            }
+            
+        }
+
+        res.Remove(x);
+
+        return res;
     }
 
     private static HashSet<int> GetAllAncestor(int x, Dictionary<int, HashSet<int>> parents)
