@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding.ShortUrlService", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding.Karat", "Coding.Karat\Coding.Karat.csproj", "{687CA7CC-42C1-4A43-AA03-9893AA3F1634}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding.CodeDesign", "Coding.CodeDesign\Coding.CodeDesign.csproj", "{C1A79C9D-B4E6-437D-9170-F7C040913469}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{687CA7CC-42C1-4A43-AA03-9893AA3F1634}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{687CA7CC-42C1-4A43-AA03-9893AA3F1634}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{687CA7CC-42C1-4A43-AA03-9893AA3F1634}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1A79C9D-B4E6-437D-9170-F7C040913469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1A79C9D-B4E6-437D-9170-F7C040913469}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1A79C9D-B4E6-437D-9170-F7C040913469}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1A79C9D-B4E6-437D-9170-F7C040913469}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
