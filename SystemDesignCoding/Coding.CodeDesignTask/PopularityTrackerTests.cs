@@ -1,6 +1,4 @@
-using Xunit;
-
-namespace Coding.CodeDesign;
+namespace Coding.CodeDesignTask;
 
 public class PopularityTrackerTests
 {
@@ -25,10 +23,10 @@ public class PopularityTrackerTests
         tracker.IncreasePopularity(2);
         tracker.IncreasePopularity(2);
 
-        tracker.DecreasePopulatiry(2);
+        tracker.DecreasePopularity(2);
         Assert.Equal(1, tracker.GetMostPopular()); // 1 和 2 现在一样流行，返回 1（最早出现）
 
-        tracker.DecreasePopulatiry(1);
+        tracker.DecreasePopularity(1);
         Assert.Equal(2, tracker.GetMostPopular()); // 2 是唯一的
     }
 
@@ -44,7 +42,7 @@ public class PopularityTrackerTests
 
         Assert.Equal(1, tracker.GetMostPopular()); // 1 最流行
 
-        tracker.DecreasePopulatiry(1);
+        tracker.DecreasePopularity(1);
         Assert.Equal(3, tracker.GetMostPopular()); // 1 和 3 平手，返回最早的 3
     }
 
@@ -60,10 +58,10 @@ public class PopularityTrackerTests
     {
         var tracker = new PopularityTracker();
         tracker.IncreasePopularity(1);
-        tracker.DecreasePopulatiry(1);
+        tracker.DecreasePopularity(1);
         Assert.Equal(-1, tracker.GetMostPopular()); // 1 被删除，返回 -1
 
-        tracker.DecreasePopulatiry(1); // 再次调用不会崩溃
+        tracker.DecreasePopularity(1); // 再次调用不会崩溃
         Assert.Equal(-1, tracker.GetMostPopular());
     }
 }
