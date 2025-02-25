@@ -1,4 +1,4 @@
-namespace Coding.CodeDesignTask;
+namespace Coding.CodeDesignTask.FileRecorderCode;
 
 public class FileRecorder
 {
