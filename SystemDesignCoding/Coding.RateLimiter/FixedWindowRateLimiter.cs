@@ -1,41 +1,38 @@
 namespace Coding.RateLimiter;
+
 using System;
 using System.Collections.Concurrent;
 
 public class FixedWindowRateLimiter(int maxRequests, int windowSizeInSeconds)
 {
-    private readonly ConcurrentDictionary<int, (int count, long windowStart)> _requestCounts = new();
-    private readonly Lock _lock = new Lock();
+    private readonly ConcurrentDictionary<int, (int count, long currentWindowId)> _requestCounts = new();
+    private readonly object _lock = new Lock();
 
     public bool RateLimit(int customerId)
     {
-        long currentTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-
+        var currentWindowId = DateTimeOffset.UtcNow.ToUnixTimeSeconds() / windowSizeInSeconds;
         lock (_lock)
         {
-            if (!_requestCounts.TryGetValue(customerId, out var entry))
+            if (!_requestCounts.TryGetValue(customerId, out var requestCount))
             {
-                _requestCounts[customerId] = (1, currentTime);
+                _requestCounts[customerId] = (1, currentWindowId);
                 return true;
             }
 
-            var (count, windowStart) = entry;
-
-            if (currentTime - windowStart >= windowSizeInSeconds)
+            var (count, windowId) = requestCount;
+            if (windowId != currentWindowId)
             {
-                // 窗口过期，重置计数
-                _requestCounts[customerId] = (1, currentTime);
+                _requestCounts[customerId] = (1, currentWindowId);
                 return true;
             }
 
             if (count < maxRequests)
             {
-                // 增加请求计数
-                _requestCounts[customerId] = (count + 1, windowStart);
+                _requestCounts[customerId] = (count + 1, currentWindowId);
                 return true;
             }
 
-            return false; // 超过限制
+            return false;
         }
     }
 }
