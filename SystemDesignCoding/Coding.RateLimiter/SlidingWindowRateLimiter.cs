@@ -10,7 +10,7 @@ public class SlidingWindowRateLimiter(int maxRequests, int windowSizeInSeconds)
     {
         var currentTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 
-        var requestQueue = _requestLogs.GetOrAdd(id, new Queue<long>());
+        var requestQueue = _requestLogs.GetOrAdd(id, _ => new Queue<long>());
 
         lock (requestQueue) 
         {
