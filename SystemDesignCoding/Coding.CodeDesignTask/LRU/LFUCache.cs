@@ -22,26 +22,29 @@ public class LFUCache
             return -1;
         }
 
-        var value = _keyToValueMap[key];
         IncreaseCount(key);
-        return value;
+        return _keyToValueMap[key];
     }
     
     public void Put(int key, int value) 
     {
-        if (_keyToValueMap.Count == _cap)
-        {
-            RemoveLessFrequent();
-        }
+        if (_cap == 0) return;
+        
         if (_keyToValueMap.ContainsKey(key))
         {
             _keyToValueMap[key] = value;
+            IncreaseCount(key);
         }
         else
         {
+            if (_keyToValueMap.Count == _cap)
+            {
+                RemoveLessFrequent();
+            }
             _keyToValueMap.Add(key, value);
+            IncreaseCount(key);
         }
-        IncreaseCount(key);
+        
     }
 
     public void IncreaseCount(int key)
