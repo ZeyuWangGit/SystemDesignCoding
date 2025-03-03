@@ -57,17 +57,24 @@ public class TokenBucketRateLimiterTests
         var taskCount = 10;
         var passedCount = 0;
 
-        var tasks = Enumerable.Range(0, taskCount)
-            .Select(_ =>
-            {
-                if (rateLimiter.TryConsume(customerId))
-                {
-                    Interlocked.Increment(ref passedCount);
-                }
+        // await Parallel.ForEachAsync(Enumerable.Range(0, taskCount), async (_, _) =>
+        // {
+        //     if (rateLimiter.TryConsume(customerId))
+        //     {
+        //         Interlocked.Increment(ref passedCount);
+        //     }
+        // });
 
-                return Task.CompletedTask;
-            }).ToArray();
+        var tasks = Enumerable.Range(0, taskCount).Select(_ => Task.Run(() =>
+        {
+            if (rateLimiter.TryConsume(customerId))
+            {
+                Interlocked.Increment(ref passedCount);
+            }
+        }));
+
         Task.WhenAll(tasks);
+        
         Assert.Equal(5, passedCount);
     }
 }
