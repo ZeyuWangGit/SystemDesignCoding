@@ -86,14 +86,16 @@ public class TokenBucket
         if (elapsedTime > 0)
         {
             var filledTokens = elapsedTime * _refillRatePerSecond;
-            if (_currentTokens + filledTokens > _maxTokens)
+            var allTokens = filledTokens + _currentCreditTokens;
+            
+            if (allTokens > _maxTokens)
             {
                 _currentTokens = _maxTokens;
-                _currentCreditTokens = Math.Max(_maxCreditTokens, _currentCreditTokens + filledTokens - _maxTokens);
+                _currentCreditTokens = Math.Min(_maxCreditTokens, _currentCreditTokens + allTokens);
             }
             else
             {
-                _currentTokens += filledTokens;
+                _currentTokens = allTokens;
             }
             _lastRefillTime = currentTime;
         }

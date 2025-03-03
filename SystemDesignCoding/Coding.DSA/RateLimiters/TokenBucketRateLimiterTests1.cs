@@ -1,6 +1,6 @@
 namespace Coding.DSA.RateLimiters;
 
-public class TokenBucketRateLimiterTests
+public class TokenBucketRateLimiterTests1
 {
     [Fact]
     public void TokenBucketRateLimiter_AllowRequestWithinLimit()
@@ -42,7 +42,7 @@ public class TokenBucketRateLimiterTests
         var rateLimiter = new TokenBucketRateLimiter(2, 1, 1);
         var customerId = 1;
         Assert.True(rateLimiter.TryConsume(customerId));
-        Thread.Sleep(2000);
+        Thread.Sleep(3000);
         Assert.True(rateLimiter.TryConsume(customerId));
         Assert.True(rateLimiter.TryConsume(customerId));
         Assert.True(rateLimiter.TryConsume(customerId));
@@ -50,7 +50,7 @@ public class TokenBucketRateLimiterTests
     }
     
     [Fact]
-    public void SlidingWindowRateLimiter_CanHandleMultipleThread()
+    public async Task SlidingWindowRateLimiter_CanHandleMultipleThread()
     {
         var rateLimiter = new TokenBucketRateLimiter(5, 0,10);
         var customerId = 1;
@@ -59,21 +59,22 @@ public class TokenBucketRateLimiterTests
 
         // await Parallel.ForEachAsync(Enumerable.Range(0, taskCount), async (_, _) =>
         // {
-        //     if (rateLimiter.TryConsume(customerId))
-        //     {
-        //         Interlocked.Increment(ref passedCount);
-        //     }
+        //      if (rateLimiter.TryConsume(customerId))
+        //      {
+        //          Interlocked.Increment(ref passedCount);
+        //      }
         // });
-
-        var tasks = Enumerable.Range(0, taskCount).Select(_ => Task.Run(() =>
+        
+        var tasks = Enumerable.Range(0, taskCount).Select(_ =>
         {
             if (rateLimiter.TryConsume(customerId))
             {
                 Interlocked.Increment(ref passedCount);
             }
-        }));
-
-        Task.WhenAll(tasks);
+            return Task.CompletedTask;
+        });
+        
+        await Task.WhenAll(tasks);
         
         Assert.Equal(5, passedCount);
     }
