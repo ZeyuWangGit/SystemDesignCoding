@@ -36,7 +36,7 @@ public class StockPriceTrackerTests
         Assert.Equal(300, _tracker.GetMaxPrice());
         Assert.Equal(100, _tracker.GetMinPrice());
 
-        Assert.Equal(150, _tracker.GetMaximumUpTo("2024-02-01 12:00:00"));
+        Assert.Equal(200, _tracker.GetMaximumUpTo("2024-02-01 12:00:00"));
         Assert.Equal(200, _tracker.GetMaximumUpTo("2024-02-01 11:59:59")); // 没有精确匹配，取 ≤ timestamp 的最大值
         Assert.Equal(300, _tracker.GetMaximumUpTo("2024-02-01 13:00:00"));
         Assert.Equal(-1, _tracker.GetMaximumUpTo("2024-01-31 23:59:59")); // 没有匹配项，返回 -1

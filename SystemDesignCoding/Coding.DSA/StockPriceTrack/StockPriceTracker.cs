@@ -9,7 +9,11 @@ public class StockPriceTracker: IStockPriceTracker
     
     public void AddOrUpdate(string timestamp, int price)
     {
-        var time = DateTime.Parse(timestamp);
+        if (!DateTime.TryParse(timestamp, out var time))
+        {
+            throw new ArgumentException("Invalid timestamp format");
+        }
+        
         if (_timeToPriceDict.ContainsKey(time))
         {
             var prevPrice = _timeToPriceDict[time];
@@ -34,7 +38,7 @@ public class StockPriceTracker: IStockPriceTracker
         
         if (_priceCountDict.ContainsKey(price))
         {
-            _priceCountDict[price] = price + 1;
+            _priceCountDict[price]++;
         }
         else
         {
@@ -107,6 +111,6 @@ public class StockPriceTracker: IStockPriceTracker
             return -1;
         }
 
-        return _timeToPriceList.Values[high];
+        return _timeToPriceList.Values.Take(high + 1).Max();
     }
 }
