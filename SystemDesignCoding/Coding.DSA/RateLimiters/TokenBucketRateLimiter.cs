@@ -48,7 +48,7 @@ public class TokenBucket
         _maxCreditTokens = maxCreditTokens;
         _currentCreditTokens = maxCreditTokens;
         _refillRatePerSecond = refillRatePerSecond;
-        _lastRefillTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+        _lastRefillTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
     }
 
     public bool TryConsume()
@@ -81,8 +81,8 @@ public class TokenBucket
 
     private void Refill()
     {
-        var currentTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-        var elapsedTime = currentTime - _lastRefillTime;
+        var currentTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+        var elapsedTime = (currentTime - _lastRefillTime)/1000;
         if (elapsedTime > 0)
         {
             var filledTokens = elapsedTime * _refillRatePerSecond;

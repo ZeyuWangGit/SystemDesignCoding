@@ -5,7 +5,7 @@ public class RouterTests
     [Fact]
     public void Router_ShouldWorkForExactMatches()
     {
-        var router = new Router();
+        var router = new Router1();
         router.AddRoute("/bar", "result");
         Assert.Equal("result", router.CallRoute("/bar"));
     }
@@ -13,7 +13,7 @@ public class RouterTests
     [Fact]
     public void Router_ShouldWorkForWildcard()
     {
-        var router = new Router();
+        var router = new Router1();
         router.AddRoute("/bar/*/baz", "result");
         Assert.Equal("result", router.CallRoute("/bar/a/baz"));
     }
@@ -21,7 +21,7 @@ public class RouterTests
     [Fact]
     public void Router_ShouldWorkForWildcard2()
     {
-        var router = new Router();
+        var router = new Router1();
         router.AddRoute("/bar/a/baz/*", "result");
         Assert.Equal("result", router.CallRoute("/bar/a/baz/b"));
     }
@@ -29,7 +29,7 @@ public class RouterTests
     [Fact]
     public void Router_ShouldWorkForNotFound()
     {
-        var router = new Router();
+        var router = new Router1();
         router.AddRoute("/bar/a/baz", "result");
         Assert.Null(router.CallRoute("/bar/b/baz"));
     }
